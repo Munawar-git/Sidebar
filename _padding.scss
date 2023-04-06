@@ -1,0 +1,34 @@
+$ratio: 0.5rem;
+$directions: top, bottom, left, right;
+
+@for $i from 0 through 5 {
+    @each $direction in $directions {
+        $dir: str-slice($direction, 1, 1);
+        .p#{$dir}-#{$i} {
+            padding-#{$direction}: 1rem + $ratio * $i;
+        }
+    }
+
+    .px-#{$i} {
+        @extend .pl-#{$i};
+        @extend .pr-#{$i};
+    }
+
+    .py-#{$i} {
+        @extend .pt-#{$i};
+        @extend .pb-#{$i};
+    }
+    .p-#{$i} {
+        @extend .px-#{$i};
+        @extend .py-#{$i};
+    }
+}
+
+// Usage:
+// p-(0-5)  : add padding to all side, 0-5 tell the padding size
+// px-(0-5) : add padding to horizontal sides
+// py-(0-5) : add padding to verticle sides
+// pt-(0-5) : add padding to top side
+// pb-(0-5) : add padding to bottom side
+// pl-(0-5) : add padding to left side
+// pr-(0-5) : add padding to right side

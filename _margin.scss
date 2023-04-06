@@ -1,0 +1,35 @@
+$fixed: 1rem;
+$ratio: 0.5rem;
+$directions: top, bottom, left, right;
+
+@for $i from 0 through 5 {
+    @each $direction in $directions {
+        $dir: str-slice($direction, 1, 1);
+        .m#{$dir}-#{$i} {
+            margin-#{$direction}: $fixed + $ratio * $i;
+        }
+    }
+
+    .mx-#{$i} {
+        @extend .ml-#{$i};
+        @extend .mr-#{$i};
+    }
+
+    .my-#{$i} {
+        @extend .mt-#{$i};
+        @extend .mb-#{$i};
+    }
+    .m-#{$i} {
+        @extend .mx-#{$i};
+        @extend .my-#{$i};
+    }
+}
+
+// Usage:
+// m-(0-5)  : add margin to all side, 0-5 tell the padding size
+// mx-(0-5) : add margin to horizontal sides
+// my-(0-5) : add margin to verticle sides
+// mt-(0-5) : add margin to top side
+// mb-(0-5) : add margin to bottom side
+// ml-(0-5) : add margin to left side
+// mr-(0-5) : add margin to right side

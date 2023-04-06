@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Example: Increase and decrease div size on checkbox click using CSS
+    </title>
+    <style>
+      .myDiv {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        transition: all 0.5s ease;
+      }
+
+      input[type="checkbox"] {
+        display: none;
+      }
+
+      input[type="checkbox"] + label {
+        cursor: pointer;
+      }
+
+      input[type="checkbox"]:checked ~ .myDiv {
+        width: 400px;
+        height: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="checkbox" id="myCheckbox" />
+    <label for="myCheckbox">Click me to toggle div size</label>
+    <div class="myDiv"></div>
+  </body>
+</html>
